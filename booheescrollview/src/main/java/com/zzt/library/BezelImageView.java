@@ -29,19 +29,21 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.view.ViewCompat;
 
 import static com.zzt.library.R.*;
 
 
 /**
- * An {@link android.widget.ImageView} that draws its contents inside a mask and draws a border
+ * An {@link androidx.appcompat.widget.AppCompatImageView} that draws its contents inside a mask and draws a border
  * drawable on top. This is useful for applying a beveled look to image contents, but is also
  * flexible enough for use with other desired aesthetics.
  */
-public class BezelImageView extends ImageView {
+public class BezelImageView extends AppCompatImageView {
     private Paint mBlackPaint;
     private Paint mMaskedPaint;
 
@@ -170,7 +172,7 @@ public class BezelImageView extends ImageView {
                 mMaskedPaint.setColorFilter((mDesaturateOnPress && isPressed())
                         ? mDesaturateColorFilter : null);
                 cacheCanvas.saveLayer(mBoundsF, mMaskedPaint,
-                        Canvas.HAS_ALPHA_LAYER_SAVE_FLAG | Canvas.FULL_COLOR_LAYER_SAVE_FLAG);
+                        Canvas.ALL_SAVE_FLAG );// | Canvas.FULL_COLOR_LAYER_SAVE_FLAG);
                 super.onDraw(cacheCanvas);
                 cacheCanvas.restoreToCount(sc);
             } else if (mDesaturateOnPress && isPressed()) {
@@ -178,7 +180,7 @@ public class BezelImageView extends ImageView {
                 cacheCanvas.drawRect(0, 0, mCachedWidth, mCachedHeight, mBlackPaint);
                 mMaskedPaint.setColorFilter(mDesaturateColorFilter);
                 cacheCanvas.saveLayer(mBoundsF, mMaskedPaint,
-                        Canvas.HAS_ALPHA_LAYER_SAVE_FLAG | Canvas.FULL_COLOR_LAYER_SAVE_FLAG);
+                        Canvas.ALL_SAVE_FLAG);// | Canvas.FULL_COLOR_LAYER_SAVE_FLAG);
                 super.onDraw(cacheCanvas);
                 cacheCanvas.restoreToCount(sc);
             } else {

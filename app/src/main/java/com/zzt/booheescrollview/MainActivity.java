@@ -3,26 +3,23 @@ package com.zzt.booheescrollview;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.zzt.library.BezelImageView;
 import com.zzt.library.BooheeScrollView;
 import com.zzt.library.BuildLayerLinearLayout;
 
-import org.w3c.dom.Text;
-
-
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     BooheeScrollView booheeScrollView;
     BuildLayerLinearLayout buildLayerLinearLayout;
@@ -33,10 +30,10 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        booheeScrollView = (BooheeScrollView)findViewById(R.id.horizon);
-        buildLayerLinearLayout = (BuildLayerLinearLayout)findViewById(R.id.linear);
+        booheeScrollView = findViewById(R.id.horizon);
+        buildLayerLinearLayout = findViewById(R.id.linear);
         final TextView t;
-        t = textView = (TextView)findViewById(R.id.text);
+        t = textView = findViewById(R.id.text);
 
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
